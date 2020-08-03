@@ -1,4 +1,3 @@
-// Author: Mario Talevski
 #include <iostream>
 #include <cstdlib>
 #include <unistd.h>
@@ -20,8 +19,8 @@ Uint32 red = 0x00ff0000;
 
 int main() {
   int x, y, n;
-  unsigned int w = 100;
-  unsigned int h = 100;
+  unsigned int w = 50;
+  unsigned int h = 50;
   unsigned int size = w * h;
   Uint32 * pixels = new Uint32[size];
   Uint32 * pixels_temp = new Uint32[size];
@@ -64,12 +63,12 @@ int main() {
   SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
   SDL_Texture * texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STREAMING, w, h);
  
-  SDL_Rect SrcR = {0, 0, 100, 100};
-  SDL_Rect DestR = {0, 0, 1000, 1000};
+  //SDL_Rect SrcR = {0, 0, 1000, 1000};
+  //SDL_Rect DestR = {0, 0, 1000, 1000};
 
   while (!quit) {
     unsigned char* lockedPixels = nullptr;
-    int pitch = 100 * sizeof(Uint32);
+    int pitch = 1000 * sizeof(Uint32);
     SDL_LockTexture(texture, NULL, reinterpret_cast< void** >( &lockedPixels ), &pitch );
     update_state(pixels, pixels_temp, w, h);
     memcpy(lockedPixels, pixels, w * h);
@@ -83,9 +82,10 @@ int main() {
     }
     
   
-    usleep(100000);
+    usleep(50000);
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, texture, &SrcR, &DestR);
+    //SDL_RenderCopy(renderer, texture, &SrcR, &DestR);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_RenderPresent(renderer);
   }
   SDL_DestroyWindow(window);
@@ -98,7 +98,7 @@ int main() {
 }
 
 Uint32 idx(unsigned int w, int i, int j) {
-   return w * i + j;
+   return w * j + i;
 }
 
 void update_state(Uint32 * grid, Uint32 * compareGrid, unsigned int w, unsigned int h) {

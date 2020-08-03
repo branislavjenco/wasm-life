@@ -1,7 +1,7 @@
 # A simple Makefile for compiling small SDL projects
 
 # set the compiler
-CC := clang++-9
+CC := g++
 # set the compiler flags
 CFLAGS := `sdl2-config --libs --cflags`
 

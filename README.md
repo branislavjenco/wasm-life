@@ -1,6 +1,15 @@
-# Game of Life
+# Game of Life implemented using WASM
+This project is implementing John Conway's Game of Life using C++ and connecting it to a JS frontend using WASM. 
 
-C++ implementation of Conway's Game of Life.
+Tasks:
+- make a function to generate random configurations
+- make a reader for RLE files and txt files (probably in JS)
+- maybe also possible to give a URL link for a starting pattern 
+- 
+
+
+# About Game of Life
+
 Also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
 
 The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.
